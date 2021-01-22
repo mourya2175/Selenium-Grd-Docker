@@ -1,0 +1,14 @@
+docker run --rm -ti --name zalenium -p 4444:4444  -e PULL_SELENIUM_IMAGE=true   -v /var/run/docker.sock:/var/run/docker.sock   -v /d/videos:/home/seluser/videos --privileged dosel/zalenium start --desiredContainers 2
+
+docker stop zalenium
+
+clean verify -P parallelPlugin,grid -Dtags=@naga -Dthreads=2 -Denvironment=remote
+
+http://localhost:4444/grid/console
+
+http://localhost:4444/dashboard/
+http://192.168.31.242:4444/grid/console
+http://localhost:4444/grid/admin/live
+
+
+      
